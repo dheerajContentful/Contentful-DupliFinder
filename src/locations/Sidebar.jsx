@@ -15,15 +15,16 @@ const Sidebar = () => {
 
   useEffect(() => {
     const fetchEntries = async () => {
-      setLoading(true);
-
+      
       const displayField = sdk.contentType.displayField;
-      if (!displayField) return;
+      if (!displayField) 
+          return;
       setEntryTitle(displayField);
 
       const currentEntryDisplayFieldValue = sdk.entry.fields[displayField].getValue();
-      if (!currentEntryDisplayFieldValue) return;
-
+      if (!currentEntryDisplayFieldValue)     
+        return;
+      
       const queryObject = {
         content_type: sdk.contentType.sys.id,
         [`fields.${displayField}[match]`]: currentEntryDisplayFieldValue
@@ -32,8 +33,6 @@ const Sidebar = () => {
       try {
         const entries = await sdk.cma.entry.getMany({ query: queryObject });
         const filteredEntries = entries.items.filter(entry => entry.sys.id !== sdk.ids.entry);
-
-        setLoading(false);
 
         if (filteredEntries.length > 0) {
           setShowDisplay(true);
@@ -45,12 +44,13 @@ const Sidebar = () => {
         }
       } catch (error) {
         console.error("Error fetching entries:", error);
-        setLoading(false);
       }
+      setLoading(false);
     };
 
     if (isLoading) {
       fetchEntries();
+      setLoading(false);
     }
   }, [isLoading, sdk.contentType.displayField, sdk.entry.fields, sdk.cma.entry, sdk.ids.entry, sdk.contentType.sys.id ]);
 
