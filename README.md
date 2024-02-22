@@ -1,6 +1,8 @@
+DupliFinder is a Contentful sidebar app to identify duplicates based on an entry title field.
+
 [![Install to Contentful](https://www.ctfstatic.com/button/install-small.svg)](https://app.contentful.com/deeplink?link=apps&id=6BxCfQxAPhfJvzXLM2Lptn)
 
-# Contentful-Find-Duplicates
+# Contentful-Identify-Duplicates
 This project was bootstrapped with Create Contentful App.
 
 # Proof of Concept 
